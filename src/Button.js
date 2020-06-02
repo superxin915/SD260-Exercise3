@@ -9,31 +9,26 @@ class Button extends React.Component {
 
 	circleID = 1;
 
-	addCircle = () => {
-		const circle = {
-			id: this.circleID++,
-			number: Math.round(Math.random() * 100),
-			color: `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
-				Math.random() * 255
-			)}, ${Math.floor(Math.random() * 255)})`,
-		};
+	addCircle = () =>
+		this.setState(previousState => ({
+			circles: [
+				...previousState.circles,
+				{
+					id: this.circleID++,
+					number: Math.round(Math.random() * 100),
+					color: `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
+						Math.random() * 255
+					)}, ${Math.floor(Math.random() * 255)})`,
+				},
+			],
+		}));
 
-		this.setState(previousState => {
-			const newArr = [...previousState.circles];
-			newArr.push(circle);
-			return {
-				circles: newArr,
-			};
-		});
-	};
-
-	removeCircle = selectedCircle => {
+	removeCircle = selectedCircle =>
 		this.setState(previousState => ({
 			circles: previousState.circles.filter(
 				circle => circle !== selectedCircle
 			),
 		}));
-	};
 
 	render = () => (
 		<>

@@ -1,16 +1,14 @@
 import React from "react";
 import "./Circle.css";
 
-class Circle extends React.Component {
-	render = () => (
+export default function Circle(props) {
+	return (
 		<div
 			className='box'
-			style={{ backgroundColor: this.props.circle.color }}
-			onClick={() => this.props.onRemoveCircle(this.props.circle)}
+			style={{ backgroundColor: props.circle.color }}
+			onClick={() => props.onRemoveCircle(props.circle)}
 		>
-			{this.props.circle.number}
+			{props.circle.number}
 		</div>
 	);
 }
-
-export default Circle;
